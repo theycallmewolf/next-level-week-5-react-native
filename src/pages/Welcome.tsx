@@ -1,9 +1,15 @@
-import React from 'react';
-import { SafeAreaView, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import React, { useState } from 'react';
+import { SafeAreaView, Text, StyleSheet, Image } from 'react-native';
+import { Button } from '../components/Button';
+
 import wateringImg from '../assets/watering.png';
 import colors from '../styles/colors';
 
 export function Welcome() {
+  const [ visibility, setVisibility ] = useState(false);
+
+  function handleVisibility() { setVisibility(!visibility) };
+
   return (
     <SafeAreaView style={ styles.container }> 
       <Text style={ styles.title }>
@@ -11,20 +17,12 @@ export function Welcome() {
         as suas { '\n'}
         plantas
       </Text>
-      <Image source={ wateringImg } style={ styles.img }/>
+      { visibility && <Image source={ wateringImg } style={ styles.img }/> }
       <Text style={ styles.subtitle }>
         Esquece-se de regar as suas plantas? 
         A Plant Manager é perfeita para a/o ajudar a lembrar-se sempre que precisar.
       </Text>
-      <TouchableOpacity 
-        style={ styles.button }
-        activeOpacity={ .3 }
-      >
-        <Text style={ styles.buttonText }>
-          {/* &gt; */}
-          continuar
-        </Text>
-      </TouchableOpacity>
+      <Button title={ visibility ? 'esconder' : 'mostrar' } onPress={ handleVisibility } />
     </SafeAreaView>
   )
 }
@@ -48,20 +46,6 @@ const styles = StyleSheet.create({
     fontSize: 18,
     paddingHorizontal: 40,
     color: colors.heading,
-  },
-  button : {
-    backgroundColor: colors.green,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 8,
-    marginBottom: 10,
-    height: 56,
-    // width: 56,
-    paddingHorizontal: 16,
-  },
-  buttonText : {
-    color: colors.white,
-    fontSize: 24,
   },
   img : {
     width: 292,
