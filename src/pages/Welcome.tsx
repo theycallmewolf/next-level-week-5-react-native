@@ -11,6 +11,7 @@ import { Feather } from '@expo/vector-icons'
 
 import wateringImg from '../assets/watering.png';
 import colors from '../styles/colors';
+import fonts from '../styles/fonts';
 
 export function Welcome() {
 
@@ -49,14 +50,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   title : {
+    fontFamily: fonts.heading,
     fontSize: 42,
-    lineHeight: 42,
+    lineHeight: 48,
     fontWeight: 'bold',
     textAlign: 'center',
     color: colors.heading,
     marginTop: 38,
   },
   subtitle : {
+    fontFamily: fonts.text,
     textAlign: 'center',
     fontSize: 18,
     paddingHorizontal: 40,
