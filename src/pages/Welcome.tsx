@@ -6,6 +6,7 @@ import {
   Image,
   TouchableOpacity,
   Dimensions,
+  View,
 } from 'react-native';
 import { Feather } from '@expo/vector-icons'
 
@@ -16,29 +17,31 @@ import fonts from '../styles/fonts';
 export function Welcome() {
 
   return (
-    <SafeAreaView style={ styles.container }> 
-      <Text style={ styles.title }>
-        Rege { '\n'}
-        as suas { '\n'}
-        plantas
-      </Text>
-      <Image
-        source={ wateringImg }
-        style={ styles.img }
-        resizeMode="contain"
-      />
-      <Text style={ styles.subtitle }>
-        Esquece-se de regar as suas plantas? 
-        A Plant Manager é perfeita para a/o ajudar a lembrar-se sempre que precisar.
-      </Text>
-      <TouchableOpacity 
-        style={ styles.button }
-        activeOpacity={ .3 }
-      >
-        <Feather
-          name="chevron-right"
-          style={ styles.buttonIcon } />
-      </TouchableOpacity>
+    <SafeAreaView style={ styles.container }>
+      <View style={ styles.wrapper }>
+        <Text style={ styles.title }>
+          Rege { '\n'}
+          as suas { '\n'}
+          plantas
+        </Text>
+        <Image
+          source={ wateringImg }
+          style={ styles.img }
+          resizeMode="contain"
+        />
+        <Text style={ styles.subtitle }>
+          Esquece-se de regar as suas plantas? 
+          A Plant Manager é perfeita para a/o ajudar a lembrar-se sempre que precisar.
+        </Text>
+        <TouchableOpacity 
+          style={ styles.button }
+          activeOpacity={ .3 }
+        >
+          <Feather
+            name="chevron-right"
+            style={ styles.buttonIcon } />
+        </TouchableOpacity>
+      </View>
     </SafeAreaView>
   )
 }
@@ -46,8 +49,12 @@ export function Welcome() {
 const styles = StyleSheet.create({
   container : {
     flex: 1,
+  },
+  wrapper: {
+    flex: 1,
     justifyContent: 'space-around',
     alignItems: 'center',
+    paddingHorizontal: 40,
   },
   title : {
     fontFamily: fonts.heading,
@@ -62,7 +69,7 @@ const styles = StyleSheet.create({
     fontFamily: fonts.text,
     textAlign: 'center',
     fontSize: 18,
-    paddingHorizontal: 40,
+    lineHeight: 28,
     color: colors.heading,
   },
   img : {
