@@ -1,14 +1,17 @@
-import React, { useState } from 'react';
-import { SafeAreaView, Text, StyleSheet, Image } from 'react-native';
-import { Button } from '../components/Button';
+import React from 'react';
+import { 
+  SafeAreaView,
+  Text,
+  StyleSheet,
+  Image,
+  TouchableOpacity,
+  Dimensions,
+} from 'react-native';
 
 import wateringImg from '../assets/watering.png';
 import colors from '../styles/colors';
 
 export function Welcome() {
-  const [ visibility, setVisibility ] = useState(false);
-
-  function handleVisibility() { setVisibility(!visibility) };
 
   return (
     <SafeAreaView style={ styles.container }> 
@@ -17,12 +20,21 @@ export function Welcome() {
         as suas { '\n'}
         plantas
       </Text>
-      { visibility && <Image source={ wateringImg } style={ styles.img }/> }
+      <Image
+        source={ wateringImg }
+        style={ styles.img }
+        resizeMode="contain"
+      />
       <Text style={ styles.subtitle }>
         Esquece-se de regar as suas plantas? 
         A Plant Manager é perfeita para a/o ajudar a lembrar-se sempre que precisar.
       </Text>
-      <Button title={ visibility ? 'esconder' : 'mostrar' } onPress={ handleVisibility } />
+      <TouchableOpacity 
+        style={ styles.button }
+        activeOpacity={ .3 }
+      >
+        <Text style={ styles.buttonText }>  👉 </Text>
+      </TouchableOpacity>
     </SafeAreaView>
   )
 }
@@ -30,7 +42,7 @@ export function Welcome() {
 const styles = StyleSheet.create({
   container : {
     flex: 1,
-    justifyContent: 'space-between',
+    justifyContent: 'space-around',
     alignItems: 'center',
   },
   title : {
@@ -48,7 +60,19 @@ const styles = StyleSheet.create({
     color: colors.heading,
   },
   img : {
-    width: 292,
-    height: 284,
-  }
+    height: Dimensions.get('window').width * .7,
+  },
+  button : {
+    backgroundColor: colors.green,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 8,
+    marginBottom: 10,
+    height: 56,
+    paddingHorizontal: 16,
+  },
+  buttonText : {
+    color: colors.white,
+    fontSize: 24,
+  },
 })
