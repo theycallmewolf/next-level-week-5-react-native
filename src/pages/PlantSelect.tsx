@@ -36,8 +36,8 @@ interface PlantProps {
 
 export function PlantSelect() {
   const [environments, setEnvironments] = useState<EnvironmentProps[]>();
-  const [plants, setPlants] = useState<PlantProps[]>();
-  const [filteredPlants, setFilteredPlants] = useState<PlantProps[]>();
+  const [plants, setPlants] = useState<PlantProps[]>([]);
+  const [filteredPlants, setFilteredPlants] = useState<PlantProps[]>([]);
   const [environmentSelected, setEnvironmentSelected] = useState('all')
   const [loading, setLoading] = useState(true);
 
