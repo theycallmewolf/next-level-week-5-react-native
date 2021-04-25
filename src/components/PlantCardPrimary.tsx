@@ -44,6 +44,7 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     alignItems: 'center',
     margin: 10,
+    borderRadius: 20,
   },
   text: {
     color: colors.green_dark,
