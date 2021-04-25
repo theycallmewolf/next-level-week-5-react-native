@@ -184,8 +184,10 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontFamily: fonts.complement,
     color: colors.heading,
-    fontSize: 12,
+    fontSize: 14,
+    letterSpacing: .9,
     marginBottom: 5,
+    marginTop: 20,
   },
   dateTimePickerButton: {
     width: '100%',
