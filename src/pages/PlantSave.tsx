@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 import { getBottomSpace } from 'react-native-iphone-x-helper';
 import { SvgFromUri } from 'react-native-svg';
-import { useRoute } from '@react-navigation/core';
+import { useNavigation, useRoute } from '@react-navigation/core';
 import DateTimePicker, { Event } from '@react-native-community/datetimepicker';
 import { isBefore, format } from 'date-fns';
 
@@ -32,6 +32,7 @@ export function PlantSave() {
   const [showDatePicker, setShowDatePicker] = useState(Platform.OS === 'ios');
 
   const route = useRoute();
+  const navigation = useNavigation();
   
   const { plant } = route.params as Params;
 
@@ -53,6 +54,14 @@ export function PlantSave() {
       await savePlant({
         ...plant,
         dateTimeNotification: selectedDateTime
+      });
+
+      navigation.navigate('Confirmation', {
+        title: 'Que bom! Uma nova planta!',
+        subtitle: `A ${plant.name} foi adicionada à sua coleção.`,
+        buttonTitle: 'continuar',
+        icon: 'hug',
+        nextScreen: 'MyPlants'
       });
 
     } catch(error) {

@@ -45,7 +45,14 @@ export function UserIdentification() {
     
     try {
       await AsyncStorage.setItem('@plant_manager:user', name)
-      navigation.navigate('Confirmation');
+      navigation.navigate('Confirmation', {
+        title: 'Obrigado',
+        subtitle: 'Tudo pronto para começar a tratar das suas plantas com todo o cuidado que elas merecem!',
+        buttonTitle: 'começar',
+        icon: 'smile',
+        nextScreen: 'PlantSelect'
+      });
+
     } catch {
       Alert.alert('Não foi possível gravar o seu nome 😳')
     }
