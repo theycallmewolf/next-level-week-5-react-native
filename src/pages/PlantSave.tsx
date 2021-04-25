@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import { getBottomSpace } from 'react-native-iphone-x-helper';
 import { SvgFromUri } from 'react-native-svg';
+import { useRoute } from '@react-navigation/core';
 
 import waterdropIcon from '../assets/waterdrop.png';
 import { Button } from '../components/Button';
@@ -18,21 +19,36 @@ import { Button } from '../components/Button';
 import colors from '../styles/colors';
 import fonts from '../styles/fonts';
 
+interface Params {
+  plant : {
+    id: string;
+    name: string;
+    about: string;
+    water_tips: string;
+    photo: string;
+    environments: [string];
+    frequency: {
+      times: number;
+      repeat_every: string;
+    }
+  }
+}
+
 export function PlantSave() {
+  const route = useRoute();
+  
+  const { plant } = route.params as Params;
+
   return (
     <View style={styles.container}>
       <View style={styles.plantInfo}>
         <SvgFromUri 
-          uri=""
+          uri={plant.photo}
           height={150}
           width={150}
         />
-
-        <Text style={styles.plantName}>Nome da Planta</Text>
-
-        <Text style={styles.plantAbout}>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minus corporis sed vitae libero sapiente deserunt ducimus possimus dolores veniam asperiores, repudiandae quo provident excepturi eos dicta omnis ut totam optio.
-        </Text>
+        <Text style={styles.plantName}>{plant.name}</Text>
+        <Text style={styles.plantAbout}>{plant.about}</Text>
       </View>
       <View style={styles.controller}>
         <View style={styles.tipContainer}>
@@ -40,7 +56,7 @@ export function PlantSave() {
             source={waterdropIcon}
             style={styles.tipImage}
           />
-          <Text style={styles.tipText}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt eligendi soluta doloribus, sit, quisquam omnis tempora quia sed voluptas amet ullam eveniet ratione rerum ut alias explicabo rem voluptatibus earum.</Text>
+          <Text style={styles.tipText}>{plant.water_tips}</Text>
         </View>
         <Text style={styles.alertLabel}>
           Selecione a hora ideal para ser recordada/o
