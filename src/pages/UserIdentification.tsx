@@ -43,8 +43,12 @@ export function UserIdentification() {
       'para continuar adiciona o teu primeiro nome 😊'
     );
     
-    await AsyncStorage.setItem('@plant_manager:user', name)
-    navigation.navigate('Confirmation');
+    try {
+      await AsyncStorage.setItem('@plant_manager:user', name)
+      navigation.navigate('Confirmation');
+    } catch {
+      Alert.alert('Não foi possível gravar o seu nome 😳')
+    }
   }
 
   return (
