@@ -1,18 +1,33 @@
 {
-  "plants_water_frequencies": [
-    {"key": "day", "title": "Todos os dias"},
-    {"key": "week", "title": "A cada semana"}
-  ],
-
-  "plants_environments": [
-    {"key": "living_room", "title": "Sala"},
-    {"key": "bedroom", "title": "Quarto"},
-    {"key": "kitchen", "title": "Cozinha"},
-    {"key": "bathroom", "title": "Banheiro"}
-  ],
-
-  "plants": [
+  "plants_water_frequencies": [{
+      "key": "day",
+      "title": "Todos os dias"
+    },
     {
+      "key": "week",
+      "title": "A cada semana"
+    }
+  ],
+
+  "plants_environments": [{
+      "key": "living_room",
+      "title": "Sala"
+    },
+    {
+      "key": "bedroom",
+      "title": "Quarto"
+    },
+    {
+      "key": "kitchen",
+      "title": "Cozinha"
+    },
+    {
+      "key": "bathroom",
+      "title": "Banheiro"
+    }
+  ],
+
+  "plants": [{
       "id": 1,
       "name": "Aningapara",
       "about": "É uma espécie tropical que tem crescimento rápido e fácil manuseio.",
